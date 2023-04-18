@@ -58,15 +58,26 @@ function App() {
     setShowPopUp(!showPopUp);
   }
 
+  const choiceBox = showPopUp ? 
+                    <ChoicePopUp 
+                      onChoose={handleChoice} 
+                      choices={["Bender", "Samus", "Avatar"]} 
+                      xPos={mouseX.current} 
+                      yPos={mouseY.current}
+                    /> 
+                    : null;
+
   return (
     <div className="App">
-      {
-        showPopUp ?
-        <ChoicePopUp onChoose={handleChoice} choices={["Bender", "Samus", "Avatar"]} xPos={mouseX.current} yPos={mouseY.current}/>
-        :
-        null
-      }
-      <img ref={imgRef} id="my-image" onClick={handleClick} className="background" src={imageTwo} alt="background" />
+      {choiceBox}
+      <img 
+        ref={imgRef} 
+        id="my-image" 
+        onClick={handleClick} 
+        className="background" 
+        src={imageTwo} 
+        alt="background"
+      />
     </div>
   );
 }
