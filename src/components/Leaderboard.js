@@ -27,8 +27,14 @@ const Leaderboard = (props) => {
                 {
                     scores.length > 0 ?
                     scores.map((elem, i) => {
+                        let classes
+                        if (elem.name === snapshot.data().name) {
+                            classes = "leaderScore userScore"; 
+                        } else {
+                            classes = "leaderScore"
+                        }
                         return (
-                            <li className="leaderScore" key={i}><span>{i+1}- {elem.name}</span><span>{elem.score} s</span></li>
+                            <li className={classes} key={i}><span>{i+1}- {elem.name}</span><span>{elem.score} s</span></li>
                         )
                     })
                     :

@@ -14,7 +14,7 @@ const Result = (props) => {
         const getUserData = async () => {
             const result = (await getDoc(userDocRef)).data();
             setShowForm(!result.name);
-            setBestScore(result.score);
+            setBestScore(props.score > result.score ? result.score : props.score);
         }
 
         getUserData();

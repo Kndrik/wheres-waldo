@@ -199,3 +199,7 @@ h1 + div {
     margin-bottom: 20px;
     font-size: 18px;
 }
+
+.userScore {
+    font-weight: bold;
+}
