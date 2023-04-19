@@ -6,9 +6,9 @@ import Target from './Target';
 const TargetsPanel = (props) => {
     return (
         <div className="targetsPanel">
-            <Target name="Bender" image={benderImage} found={false}/>
-            <Target name="Avatar" image={avatarImage} found={false}/>
-            <Target name="Samus" image={samusImage} found={false}/>
+            <Target name="Bender" image={benderImage} found={props.targetsData.Bender}/>
+            <Target name="Avatar" image={avatarImage} found={props.targetsData.Avatar}/>
+            <Target name="Samus" image={samusImage} found={props.targetsData.Samus}/>
         </div>
     );
 };
