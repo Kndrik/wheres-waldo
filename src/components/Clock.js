@@ -1,6 +1,6 @@
 const Clock = (props) => {
     return (
-        <div className="clock">{props.value}</div>
+        <div className="clock">{props.value}s</div>
     );
 }
 

@@ -11,6 +11,7 @@ import { useDocument } from "react-firebase-hooks/firestore";
 import ChoicePopUp from "./components/ChoicePopUp.js";
 import TargetsPanel from "./components/TargetsPanel";
 import Clock from "./components/Clock";
+import Result from "./components/Result";
 
 import "./App.css";
 
@@ -23,6 +24,7 @@ function App() {
   const imageY = useRef(null);
   const mouseX = useRef(0);
   const mouseY = useRef(0);
+  const finalScore = useRef(0);
 
   const [showPopUp, setShowPopUp] = useState(false);
   const [snapshot, loading, error] = useDocument(
@@ -44,14 +46,17 @@ function App() {
         const uid = auth.currentUser.uid;
       
         const userCharactersRef = doc(db, "users", uid);
+        console.log('authed', uid);
         getDoc(userCharactersRef).then((doc) => {
-          if (doc.exists) {
+          if (doc.exists()) {
+            console.log("doc exists");
             updateDoc(userCharactersRef, {
               Bender: false,
               Avatar: false,
               Samus: false
             });
           } else {
+            console.log("doesn't exist. Creating with uid", uid);
             setDoc(userCharactersRef, {
               Bender: false,
               Avatar: false,
@@ -155,6 +160,7 @@ function App() {
   if (!loading && !error && snapshot && snapshot.data && !allFound) {
     if (foundAllCharacters()) {
       setAllFound(true);
+      finalScore.current = time;
       assignTimeToUser();
     }
   }
@@ -182,8 +188,13 @@ function App() {
     null :
     <Clock value={time} />;
 
+  const result = allFound ?
+    <Result score={finalScore.current} /> :
+    null;
+
   return (
     <div className="App">
+      {result}
       {choiceBox}
       <img 
         ref={imgRef} 
