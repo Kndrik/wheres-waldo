@@ -1,9 +1,9 @@
 import { initializeApp } from "firebase/app";
-import imageOne from "./images/image_one.jpeg";
 import imageTwo from "./images/image_two.jpeg";
 import React, { useRef, useState } from "react";
 import ChoicePopUp from "./components/ChoicePopUp.js";
 import "./App.css";
+import TargetsPanel from "./components/TargetsPanel";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDmCpmpDrCxuC9lMmi5YWBq5eJHTu1ICOo",
@@ -78,6 +78,9 @@ function App() {
         src={imageTwo} 
         alt="background"
       />
+      <div className="panelContainer">
+        <TargetsPanel />
+      </div>
     </div>
   );
 }

@@ -1,12 +1,10 @@
-import { useRef, useEffect } from "react";
-
 const ChoicePopUp = (props) => {
     return (
         <div 
             className="choiceContainer"
             style={{position: 'absolute',
-                    left: Math.min(window.innerWidth-120, (props.xPos+10)) + 'px',
-                    top: Math.min(document.body.scrollHeight - 140, (props.yPos+10)) + 'px'}}>
+                    left: Math.min(window.innerWidth-120, (props.xPos)) + 'px',
+                    top: Math.min(document.body.scrollHeight - 140, (props.yPos)) + 'px'}}>
             <ul className="choiceList">
                 {
                     props.choices.map((elem, i) =>
